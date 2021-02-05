@@ -1,10 +1,11 @@
 import React from "react";
 import Head from "next/head";
 import { Location } from "../components/Location";
+import { NextPage } from "next";
 
-export default function Home() {
-  const [location, setLocation] = React.useState(null);
-  const [errorMessage, setErrorMessage] = React.useState(null);
+const Home: NextPage = () => {
+  const [location, setLocation] = React.useState<Position>(null);
+  const [errorMessage, setErrorMessage] = React.useState<string>(null);
 
   const pollForLocation = () => {
     console.log("polling...");
@@ -33,6 +34,7 @@ export default function Home() {
         </h1>
 
         {errorMessage && <span>{errorMessage}</span>}
+
         {location && <Location location={location} />}
       </main>
 
@@ -194,4 +196,6 @@ export default function Home() {
       `}</style>
     </div>
   );
-}
+};
+
+export default Home;
